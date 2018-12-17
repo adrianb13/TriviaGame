@@ -1,0 +1,52 @@
+header {
+    text-align: center;
+    color: blue;
+    text-shadow: 2px 2px yellow;
+    font-size: 60px;
+    font-weight: bold;
+    border-bottom: 3px dotted red;
+    margin: 0px auto 20px auto;
+    padding: 20px;
+}
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+    .timeBox {
+        font-size: 25px;
+        padding: 20px;
+    }
+    .red {
+        color: red;
+        margin-bottom: 20px;
+    }
+    .box {
+        border: 3px solid magenta;
+        width: 650px;
+        height: 350px;
+        font-size: 25px;
+        margin: 0 auto 0 auto;
+    }
+    #questions {
+        font-size: 25px;
+        margin: 20px;
+        width: 600px;
+        border: none;
+    }
+    .answer {
+        font-size: 25px;
+        margin: 5px auto 5px auto;
+        width: 500px;
+        border: 1px solid orange;
+    }
+    #start {
+        margin-top: 50px;
+        color: lime;
+        font-weight: bold;
+    }
+    .clear {
+        border: none;
+        color: white;
+        margin-bottom: 20px;
+    }
