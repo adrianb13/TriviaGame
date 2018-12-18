@@ -141,7 +141,7 @@ function stop() {
         i = 0;
         right = 0;
         wrong = 0;
-        $("#start").text("Press START To Play Again").attr("class", "#start")
+        $("#start").text("Press [START] To Play Again").attr("class", "#start")
     }
 }
 function rightWrong() {
