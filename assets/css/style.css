@@ -7,46 +7,78 @@ header {
     border-bottom: 3px dotted red;
     margin: 0px auto 20px auto;
     padding: 20px;
+    background-color: black;
+    opacity: 0.8;
 }
 body {
     background-color: black;
     color: white;
     text-align: center;
 }
+    .backPic {
+        background: url("../images/background.jpg");
+        background-size: auto 100%;
+        background-position: center;
+    }
     .timeBox {
         font-size: 25px;
+        color: yellow;
         padding: 20px;
     }
     .red {
         color: red;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 35px;
+    }
+    .white {
+        color: white;
+    }
+    .correct {
+        color: lime;
+    }
+    .wrong {
+        color: red;
     }
     .box {
         border: 3px solid magenta;
-        width: 650px;
-        height: 350px;
+        width: 70%;
+        height: auto;
         font-size: 25px;
         margin: 0 auto 0 auto;
-    }
-    #questions {
-        font-size: 25px;
-        margin: 20px;
-        width: 600px;
-        border: none;
+        background: black;
+        opacity: 0.8;
     }
     .answer {
         font-size: 25px;
         margin: 5px auto 5px auto;
-        width: 500px;
+        width: 80%;
         border: 1px solid orange;
-    }
-    #start {
-        margin-top: 50px;
-        color: lime;
-        font-weight: bold;
     }
     .clear {
         border: none;
         color: white;
         margin-bottom: 20px;
+    }
+    #questions {
+        font-size: 25px;
+        margin: 20px auto 20px auto;
+        width: 100%;
+        border: none;
+    }
+    #answerKey {
+        margin-bottom: 10px;
+    }
+    #start {
+        margin: 20px 0 20px 0;
+        color: lime;
+        font-weight: bold;
+    }
+    #target {
+        height: auto;
+        width: 200px;
+        margin: 10px auto 5px auto;
+    }
+    #target2 {
+        margin: 0 auto 20px auto;
     }

@@ -6,7 +6,7 @@ var q1 = {
     b: "1968",
     c: "1969",
     d: "1970"
-    }
+    };
 // Q2 : D
 var q2 = {
     question: "What is the estimated age of the universe?",
@@ -14,7 +14,7 @@ var q2 = {
     b: "12.8 Billion Years Old",
     c: "13.3 Billion Years Old",
     d: "13.8 Billion Years Old"
-    }
+    };
 // Q3 : B
 var q3 = {
     question: "About how many miles is Earth away from the sun?",
@@ -22,7 +22,7 @@ var q3 = {
     b: "93 million",
     c: "94 million",
     d: "95 million"
-}
+    };
 // Q4 : D
 var q4 = {
     question: "What is the brightest star in the known universe?",
@@ -30,7 +30,7 @@ var q4 = {
     b: "Arcturus",
     c: "Pleiadis",
     d: "Sirius"
-}
+    };
 // Q5 : A
 var q5 = {
     question: "What is the closest galaxy to Earth (not including our own)?",
@@ -38,12 +38,12 @@ var q5 = {
     b: "Pinwheel Galaxy",
     c: "Tadpole Galaxy",
     d: "Whirlpool Galaxy"
-}
+    };
 
 var qList = [q1, q2, q3, q4, q5];
 var right = 0;
 var wrong = 0;
-var number = 20;
+var number = 15;
 var wait = 5;
 var intervalId;
 var a = false;
@@ -52,10 +52,27 @@ var c = false;
 var d = false;
 var i = 0;
 
+var pic = $("<img>");
+    pic.attr("src","https://media.giphy.com/media/7zQ02nV86XGBce95o5/giphy.gif");
+    pic.attr("id", "target");
+
+var picStart = $("<img>");
+    picStart.attr("src", "https://media.giphy.com/media/xT9IgusfDcqpPFzjdS/giphy.gif");
+    picStart.attr("id", "target");
+    $("#target").append(picStart);
+
+var picRight = $("<img>");
+    picRight.attr("src", "https://media.giphy.com/media/NDJWGU4n74di0/giphy.gif");
+    picRight.attr("id", "target");
+
+var picWrong = $("<img>");
+    picWrong.attr("src", "https://media.giphy.com/media/nuIe85WYG7bc4/giphy.gif");
+    picWrong.attr("id", "target");
+
 $("#start").on("click", function start() {
     run();
-    $("#start").empty();
 });
+
 
 $("#answerA").on("click", function () {
     a = true;
@@ -76,9 +93,10 @@ $("#answerD").on("click", function () {
 
 function run() {
     clearInterval(intervalId);
+    clear();
     $("#timer").html(number).attr("class", "clear");
     intervalId = setInterval(decrement, 1000);
-    $("#questions").text(qList[i].question);
+    $("#questions").text(qList[i].question).attr("class", "white");
     $("#answerA").text(qList[i].a).attr("class", "answer");
     $("#answerB").text(qList[i].b).attr("class", "answer");
     $("#answerC").text(qList[i].c).attr("class", "answer"); 
@@ -87,7 +105,7 @@ function run() {
         clearInterval(intervalId);
         stop();
     }
-}
+};
 
 function decrement() {
     number --;
@@ -102,12 +120,13 @@ function decrement() {
         $("#timer").html(number).attr("class", "clear");
         number = 20;
     }
-}
+};
 
 function waitTime() {
     clearInterval(intervalId);
+    clear();
     intervalId = setInterval(decrement2, 1000);
-    }
+};
 
 function decrement2() {
     wait --;
@@ -116,7 +135,8 @@ function decrement2() {
         run();
         wait = 5;
     }
-}
+};
+
 function stop() {
     clearInterval(intervalId);
     number = 20;
@@ -132,85 +152,105 @@ function stop() {
     };
     console.log(i);
     if (i === 5) {
-        $("#questions").text("Results!!!")
-        $("#answerA").text("Correct: " + right);
+        clear();
+        $("#questions").text("Results!!!").attr("class", "clear")
+        $("#answerKey").text("Correct: " + right).attr("class", "correct");
+        $("#answerA").text(" ");    
         $("#answerB").text(" ");
-        $("#answerC").text("Wrong: " + wrong);
+        $("#answerC").text(" ");
         $("#answerD").text(" ");
+        $("#target").text("Wrong: " + wrong).attr("class", "wrong");
         clearInterval(intervalId);
         i = 0;
         right = 0;
         wrong = 0;
-        $("#start").text("Press [START] To Play Again").attr("class", "#start")
+        $("#start").text("Press [START] To Play Again").attr("class", "#start");
+        $("#target2").append(pic);
+        $("#getReady").text("Miss Universe 2018 Congratulates You!")
     }
-}
+};
+
 function rightWrong() {
-    console.log("hello" + i)
     clearInterval(intervalId);
-    waitTime()
+    clear();
+    waitTime();
     if (i === 0 && c === true) {
-        console.log(c)
         correct();
     } else if (i === 0 && c=== false) {
-        $("#questions").text("You are wrong!");
-        $("#answerA").text("Correct answer was: " + qList[0].c).attr("class", "clear");
-        $("#answerB").text(" ").attr("class", "clear");
-        $("#answerC").text(" ").attr("class", "clear");
-        $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
+        clear();
+        $("#questions").html("You are wrong!").attr("class", "wrong");
+        $("#answerKey").text("Correct answer was: " + qList[0].c).attr("class", "clear");
+        $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+        $("#target").append(picWrong);
         wrong++;
     }
     if (i === 1 && d === true) {
-        console.log(d)
         correct();
     } else if (i === 1 && d === false) {
-        $("#questions").text("You are wrong!");
-        $("#answerA").text("Correct answer was: " + qList[1].d).attr("class", "clear");
-        $("#answerB").text(" ").attr("class", "clear");
-        $("#answerC").text(" ").attr("class", "clear");
-        $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
+        clear();
+        $("#questions").text("You are wrong!").attr("class", "wrong");
+        $("#answerKey").text("Correct answer was: " + qList[1].d).attr("class", "clear");
+        $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+        $("#target").append(picWrong);
         wrong++;
     }
     if (i === 2 && b === true) {
         console.log(b)
         correct();
     } else if (i === 2 && b === false) {
-        $("#questions").text("You are wrong!");
-        $("#answerA").text("Correct answer was: " + qList[2].b).attr("class", "clear");
-        $("#answerB").text(" ").attr("class", "clear");
-        $("#answerC").text(" ").attr("class", "clear");
-        $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
+        clear();
+        $("#questions").text("You are wrong!").attr("class", "wrong");
+        $("#answerKey").text("Correct answer was: " + qList[2].b).attr("class", "clear");
+        $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+        $("#target").append(picWrong);
         wrong++;
     }
     if (i === 3 && d === true) {
         console.log(d)
         correct();
     } else if (i === 3 && d === false) {
-        $("#questions").text("You are wrong!");
-        $("#answerA").text("Correct answer was: " + qList[3].d).attr("class", "clear");
-        $("#answerB").text(" ").attr("class", "clear");
-        $("#answerC").text(" ").attr("class", "clear");
-        $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
+        clear();
+        $("#questions").text("You are wrong!").attr("class", "wrong");
+        $("#answerKey").text("Correct answer was: " + qList[3].d).attr("class", "clear");
+        $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+        $("#target").append(picWrong);
         wrong++;
     }
     if (i === 4 && a === true) {
         console.log(a)
         correct();
     } else if (i === 4 && a === false) {
-        $("#questions").text("You are wrong!");
-        $("#answerA").text("Correct answer was: " + qList[4].a).attr("class", "clear");
-        $("#answerB").text(" ").attr("class", "clear");
-        $("#answerC").text(" ").attr("class", "clear");
-        $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
+        clear();
+        $("#questions").text("You are wrong!").attr("class", "wrong");
+        $("#answerKey").text("Correct answer was: " + qList[4].a).attr("class", "clear");
+        $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+        $("#target").append(picWrong);
         wrong++;
     }
-}
+};
 
 function correct () {
-    $("#questions").text("You are correct!");
+    clear();
+    $("#questions").text("You are correct!").attr("class", "correct");
+    $("#answerKey").text(" ");
+    $("#answerA").text(" ");
+    $("#answerB").text(" ");
+    $("#answerC").text(" ");
+    $("#answerD").text(" ");
+    $("#getReady").text("Get Ready For The Next Question").attr("class", "clear");
+    right++;
+    $("#target").append(picRight);
+}
+function clear () {
+    $("#start").empty();
+    $("#target").empty();
+    $("#target2").empty();
+    $("#answerKey").text(" ").attr("class", "clear");
     $("#answerA").text(" ").attr("class", "clear");
     $("#answerB").text(" ").attr("class", "clear");
     $("#answerC").text(" ").attr("class", "clear");
-    $("#answerD").text("Get Ready For The Next Question").attr("class", "clear");
-    right++;
+    $("#answerD").text(" ").attr("class", "clear");
+    $("#getReady").text(" ").attr("class", "clear");
+
 }
 });
