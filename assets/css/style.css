@@ -16,7 +16,8 @@ body {
     text-align: center;
 }
     .backPic {
-        background: url("../images/background.jpg");
+        background: url("../images/background.jpg") no-repeat;
+        background-color: black;
         background-size: auto 100%;
         background-position: center;
     }
@@ -45,7 +46,7 @@ body {
         width: 70%;
         height: auto;
         font-size: 25px;
-        margin: 0 auto 0 auto;
+        margin: 0 auto 20px auto;
         background: black;
         opacity: 0.8;
     }
@@ -76,7 +77,7 @@ body {
     }
     #target {
         height: auto;
-        width: 200px;
+        width: 80%;
         margin: 10px auto 5px auto;
     }
     #target2 {
