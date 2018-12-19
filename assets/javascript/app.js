@@ -101,7 +101,7 @@ function run() {
     $("#answerB").text(qList[i].b).attr("class", "answer");
     $("#answerC").text(qList[i].c).attr("class", "answer"); 
     $("#answerD").text(qList[i].d).attr("class", "answer");
-    if (i === 5){
+    if (i === qList.length){
         clearInterval(intervalId);
         stop();
     }
@@ -118,7 +118,7 @@ function decrement() {
         $("#questions").text("Time's Up");
         stop();
         $("#timer").html(number).attr("class", "clear");
-        number = 20;
+        number = 15;
     }
 };
 
@@ -139,7 +139,7 @@ function decrement2() {
 
 function stop() {
     clearInterval(intervalId);
-    number = 20;
+    number = 15;
     $("#timer").html(wait);
     if (i < 5) {
     rightWrong();
@@ -151,14 +151,10 @@ function stop() {
     d = false;
     };
     console.log(i);
-    if (i === 5) {
+    if (i === qList.length) {
         clear();
         $("#questions").text("Results!!!").attr("class", "clear")
         $("#answerKey").text("Correct: " + right).attr("class", "correct");
-        $("#answerA").text(" ");    
-        $("#answerB").text(" ");
-        $("#answerC").text(" ");
-        $("#answerD").text(" ");
         $("#target").text("Wrong: " + wrong).attr("class", "wrong");
         clearInterval(intervalId);
         i = 0;
@@ -232,7 +228,7 @@ function rightWrong() {
 function correct () {
     clear();
     $("#questions").text("You are correct!").attr("class", "correct");
-    $("#answerKey").text(" ");
+    $("#answerKey").empty();
     $("#answerA").text(" ");
     $("#answerB").text(" ");
     $("#answerC").text(" ");
