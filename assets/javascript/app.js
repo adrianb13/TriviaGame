@@ -73,7 +73,6 @@ $("#start").on("click", function start() {
     run();
 });
 
-
 $("#answerA").on("click", function () {
     a = true;
     stop();    
@@ -115,7 +114,6 @@ function decrement() {
     };
     if (number === 0) {
         clearInterval(intervalId);
-        $("#questions").text("Time's Up");
         stop();
         $("#timer").html(number).attr("class", "clear");
         number = 15;
